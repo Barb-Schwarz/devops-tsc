@@ -1,0 +1,32 @@
+version: '3.3'
+
+services:
+  wp-thestagingcommunity:
+    image: "${TSC_image}"
+    volumes:
+      # PHP Settings
+      - "./artifacts/php.conf.main.ini:/usr/local/etc/php/conf.d/php.conf.main.ini"
+      # WordPress
+      - "./artifacts/wp-content:/var/www/html/wp-content"
+      # Application Specific
+      ## None for now.
+    ports:
+      - "${TSC_ports}"
+    networks:
+      - '${TSC_networks}'
+    restart: always
+    environment:
+      WORDPRESS_DB_HOST: ${TSC_mysql_db_host}
+      WORDPRESS_DB_NAME: ${TSC_mysql_db_name}
+      WORDPRESS_DB_USER: ${TSC_mysql_db_user}
+      WORDPRESS_DB_PASSWORD: ${TSC_mysql_db_password}
+      WORDPRESS_CONFIG_EXTRA: |
+        /* Fix site URL. */
+        define("WP_HOME", "${TSC_wce_wp_home}");
+        define("WP_SITEURL", "${TSC_wce_wp_home}");
+
+        /* WordFence to DB */
+        define('WFWAF_STORAGE_ENGINE', '${TSC_wce_wfwaf_storage_engine}');
+networks:
+  nginx-proxy:
+    external: true

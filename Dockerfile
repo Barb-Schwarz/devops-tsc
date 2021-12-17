@@ -1,7 +1,7 @@
-# thestagingcommunity.com
+# barbschwarzworldwidestagingcommunity.com
 #
 # Build Image to AWS ECR
-# 1. docker build -t thestagingcommunity:0.0.1-wp-5.8.2 .
+# 1. docker build -t barbschwarzworldwidestagingcommunity:0.0.1-wp-5.8.2 .
 # 2. Update docker-compose.yaml to use new image.
 
 FROM wordpress:5.8.2-php8.0-apache

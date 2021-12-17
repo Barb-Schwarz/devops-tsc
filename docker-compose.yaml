@@ -1,7 +1,7 @@
 version: '3.3'
 
 services:
-  wp-thestagingcommunity:
+  wp-barbschwarzworldwidestagingcommunity:
     image: "${TSC_image}"
     volumes:
       # PHP Settings

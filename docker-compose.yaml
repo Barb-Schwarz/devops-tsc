@@ -10,10 +10,11 @@ services:
       - "./artifacts/wp-content:/var/www/html/wp-content"
       # Application Specific
       ## None for now.
-    ports:
-      - "${TSC_ports}"
+    # ports:
+    #   - "${TSC_ports}"
     networks:
       - '${TSC_networks}'
+    container_name: wp-barbschwarzworldwidestagingcommunity
     restart: always
     environment:
       WORDPRESS_DB_HOST: ${TSC_mysql_db_host}
